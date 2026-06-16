@@ -5,11 +5,10 @@ import {TypeOrmModule} from '@nestjs/typeorm';
 import 'dotenv/config';
 import { User } from './users/user.entity';
 import { Service } from './services/service.entity';
-import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
-import { AuthService } from './auth/auth.service';
-import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
+import { ServicesModule } from './services/services.module';
+import { PublicController } from './public/public.controller';
 
 @Module({
   imports: [
@@ -24,8 +23,9 @@ import { AuthModule } from './auth/auth.module';
       synchronize: true,
   }),
     UsersModule,
-    AuthModule],
-  controllers: [AppController, AuthController],
-  providers: [AppService, UsersService, AuthService],
+    AuthModule,
+    ServicesModule],
+  controllers: [AppController, PublicController],
+  providers: [AppService],
 })
 export class AppModule {}

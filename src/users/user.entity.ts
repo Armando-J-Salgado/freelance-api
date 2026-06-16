@@ -15,6 +15,6 @@ export class User {
     @Column()
     password: string;
 
-    @OneToMany(()=>Service, (service)=>service.user)
+    @OneToMany(()=>Service, (service)=>service.provider)
     services: Service[];
 }

@@ -15,9 +15,9 @@ export class Service {
     @Column()
     description: string;
 
-    @Column()
+    @Column({ type: 'numeric', precision: 10, scale: 2 })
     price: number;
 
     @ManyToOne(()=>User, (user)=>user.services)
-    user: User;
+    provider: User;
 }
