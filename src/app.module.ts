@@ -3,6 +3,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import 'dotenv/config';
+import { User } from './users/user.entity';
+import { Service } from './services/service.entity';
+import { UsersService } from './users/users.service';
+import { UsersModule } from './users/users.module';
+import { AuthService } from './auth/auth.service';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -13,10 +20,12 @@ import 'dotenv/config';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [],
+      entities: [User, Service],
       synchronize: true,
-  })],
-  controllers: [AppController],
-  providers: [AppService],
+  }),
+    UsersModule,
+    AuthModule],
+  controllers: [AppController, AuthController],
+  providers: [AppService, UsersService, AuthService],
 })
 export class AppModule {}
