@@ -12,6 +12,7 @@ export class AuthController {
     @ApiOperation({description: 'Log in as a freelancer'})
     @ApiBody({type: LoginDto})
     @ApiResponse({status: 200, description: 'User authenticated'})
+    @ApiResponse({status: 401, description: 'Invalid credentials'})
     async login(@Body() dto: LoginDto) {
         const user = await this.authService.validate(dto.email, dto.password);
         if (!user) {
