@@ -10,7 +10,6 @@ async function bootstrap() {
   .setDescription('An API to show the world your services')
   .setVersion('1.0')
   .addBearerAuth()
-  .addTag('Users')
   .addTag('Services')
   .addTag('Public')
   .addTag('Auth')
